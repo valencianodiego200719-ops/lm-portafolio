@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cross escolar de Hortaleza · Plano del recorrido</title>
+  <meta name="description" content="Plano del cross escolar de Hortaleza: recorrido, salida, meta, aseos, corralitos, escenario y autocares.">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#principal">Saltar al contenido principal</a>
+
+  <header class="cabecera">
+    <p class="titulo-sitio">Cross escolar de Hortaleza</p>
+    <nav aria-label="En esta página">
+      <ul class="nav-pagina">
+        <li><a href="#plano">Plano</a></li>
+        <li><a href="#zonas">Zonas</a></li>
+        <li><a href="#video">Vídeo</a></li>
+        <li><a href="#avisos">Avisos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="principal" class="contenido">
+    <h1>Cross escolar de Hortaleza: plano del recorrido</h1>
+    <p>Esta página explica cómo está organizado el cross escolar de Hortaleza: por dónde pasa el recorrido
+       y dónde están la salida, la meta, los aseos, los corralitos, el escenario y los autocares.</p>
+
+    <section id="plano" aria-labelledby="t-plano">
+      <h2 id="t-plano">Plano del recorrido</h2>
+      <figure class="figura-mapa">
+        <img class="mapa"
+             src="img/plano_cross-800.jpg"
+             srcset="img/plano_cross-400.jpg 400w,
+                     img/plano_cross-800.jpg 800w,
+                     img/plano_cross-1082.jpg 1082w"
+             sizes="(min-width: 900px) 800px, 100vw"
+             width="1082" height="567"
+             alt="Plano aéreo del parque con el recorrido del cross marcado en amarillo y las zonas señalizadas">
+        <figcaption>Vista aérea del circuito. El recorrido es la línea amarilla; la salida queda a la izquierda y la meta, abajo, junto a los aseos.</figcaption>
+      </figure>
+    </section>
+
+    <section id="zonas" aria-labelledby="t-zonas">
+      <h2 id="t-zonas">Zonas del evento</h2>
+      <article>
+        <h3>Cómo es el recorrido</h3>
+        <ol class="pasos">
+          <li>La salida está a la izquierda del plano, junto a la avenida.</li>
+          <li>El circuito sigue la avenida y se adentra en el parque.</li>
+          <li>Rodea la zona de corralitos, en el centro del parque.</li>
+          <li>La meta está abajo a la izquierda, junto a los aseos.</li>
+        </ol>
+      </article>
+
+      <div class="tabla-scroll">
+        <table>
+          <caption>Zonas señaladas en el plano del cross escolar</caption>
+          <thead>
+            <tr>
+              <th scope="col">Zona</th>
+              <th scope="col">Para qué sirve</th>
+              <th scope="col">Dónde está en el plano</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Salida</th>
+              <td>Punto donde empieza la carrera.</td>
+              <td>Extremo izquierdo, junto a la avenida.</td>
+            </tr>
+            <tr>
+              <th scope="row">Recorrido</th>
+              <td>Camino que siguen los corredores.</td>
+              <td>Línea amarilla por la avenida y el parque.</td>
+            </tr>
+            <tr>
+              <th scope="row">Meta</th>
+              <td>Punto donde termina la carrera.</td>
+              <td>Parte inferior izquierda, junto a los aseos.</td>
+            </tr>
+            <tr>
+              <th scope="row">Aseos</th>
+              <td>Servicios para participantes y público.</td>
+              <td>Junto a la meta.</td>
+            </tr>
+            <tr>
+              <th scope="row">Corralitos</th>
+              <td>Zonas acotadas para agrupar a los participantes.</td>
+              <td>Centro del parque, dentro del óvalo verde.</td>
+            </tr>
+            <tr>
+              <th scope="row">Escenario y entrega de trofeos</th>
+              <td>Lugar donde se entregan los premios.</td>
+              <td>Parte superior, hacia el centro.</td>
+            </tr>
+            <tr>
+              <th scope="row">Autocares</th>
+              <td>Zona reservada para los autocares.</td>
+              <td>Lado derecho del plano.</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Información tomada del plano del evento.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section id="video" aria-labelledby="t-video">
+      <h2 id="t-video">Vídeo del recorrido</h2>
+      <figure>
+        <video controls preload="metadata" width="640" height="360" poster="img/cross_poster.jpg">
+          <source src="media/cross_hortaleza.mp4" type="video/mp4">
+          <track kind="captions" src="media/cross_hortaleza.es.vtt" srclang="es" label="Español" default>
+          <p>Tu navegador no puede reproducir este vídeo. <a href="media/cross_hortaleza.mp4">Descarga el vídeo del recorrido (MP4)</a>.</p>
+        </video>
+        <figcaption>Vídeo de 18 segundos, sin sonido, que recorre el plano. Los subtítulos explican cada zona.</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <aside id="avisos" class="lateral" aria-labelledby="t-avisos">
+    <h2 id="t-avisos">Recibe el plano por correo</h2>
+    <form id="form-avisos" action="#" method="post">
+      <label for="correo">Tu correo electrónico</label>
+      <input type="email" id="correo" name="correo" autocomplete="email" required>
+      <button type="submit">Enviarme el plano</button>
+    </form>
+    <p id="estado-avisos" role="status"></p>
+  </aside>
+
+  <footer class="pie">
+    <p>Cross escolar de Hortaleza · Portafolio de Lenguajes de marcas, UT 3 · Actualizado el <time datetime="2026-11-17">17 de noviembre de 2026</time></p>
+  </footer>
+
+  <script>
+    document.getElementById('form-avisos').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('estado-avisos').textContent = '¡Gracias! Te enviaremos el plano.';
+      this.reset();
+    });
+  </script>
+</body>
+</html>

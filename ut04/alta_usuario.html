@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alta de usuario · Red del centro</title>
+  <link rel="stylesheet" href="css/alta.css">
+  <script src="js/alta.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Red del centro · Alta de usuario</h1>
+  </header>
+
+  <main>
+    <p>Los campos marcados con <span class="obligatorio" aria-hidden="true">*</span> son obligatorios.</p>
+
+    <!-- MÉTODO DE ENVÍO: POST.
+         El formulario incluye una contraseña y datos personales (NIA, correo, fecha de nacimiento).
+         Con GET viajarían en la URL, y quedarían en el historial, la caché y los registros del servidor.
+         Con POST van en el cuerpo de la petición. POST no cifra: en producción debe usarse HTTPS.
+         Además, esta petición crea un usuario (modifica datos), y GET debe usarse solo para consultas.
+         No se necesita multipart: no hay ficheros (se usa el enctype por defecto). -->
+    <form id="formAlta" action="https://httpbin.org/post" method="post">
+
+      <fieldset>
+        <legend>Datos personales</legend>
+
+        <div class="campo">
+          <label for="nombre">Nombre y apellidos <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="80" autocomplete="name">
+        </div>
+
+        <div class="campo">
+          <label for="nacimiento">Fecha de nacimiento <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input type="date" id="nacimiento" name="nacimiento" required min="1940-01-01" aria-describedby="ayuda-nac">
+          <small id="ayuda-nac">Edad mínima: 14 años.</small>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono móvil</label>
+          <input type="tel" id="telefono" name="telefono" pattern="[67][0-9]{8}"
+                 title="9 cifras empezando por 6 o 7, sin espacios" autocomplete="tel-national">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Datos académicos</legend>
+
+        <div class="campo">
+          <label for="nia">NIA <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input type="text" id="nia" name="nia" required pattern="[0-9]{7}"
+                 title="El NIA tiene 7 cifras, por ejemplo 1234567" inputmode="numeric" maxlength="7"
+                 aria-describedby="ayuda-nia">
+          <small id="ayuda-nia">7 cifras (ejemplo: 1234567).</small>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo del centro <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input type="email" id="correo" name="correo" required autocomplete="email">
+        </div>
+
+        <div class="campo">
+          <label for="ciclo">Ciclo formativo <span class="obligatorio" aria-hidden="true">*</span></label>
+          <select id="ciclo" name="ciclo" required>
+            <option value="">— Elige una opción —</option>
+            <option value="asir">ASIR</option>
+            <option value="dam">DAM</option>
+            <option value="daw">DAW</option>
+            <option value="smr">SMR</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="almacenamiento">Almacenamiento solicitado (GB)</label>
+          <input type="number" id="almacenamiento" name="almacenamiento" min="1" max="50" step="1" value="5">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Perfil <span class="obligatorio" aria-hidden="true">*</span></legend>
+        <div class="opcion">
+          <input type="radio" id="p-alumno" name="perfil" value="alumno" required>
+          <label for="p-alumno">Alumno/a</label>
+        </div>
+        <div class="opcion">
+          <input type="radio" id="p-profesor" name="perfil" value="profesor">
+          <label for="p-profesor">Profesor/a</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Cuenta de acceso</legend>
+
+        <div class="campo">
+          <label for="usuario">Nombre de usuario <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input type="text" id="usuario" name="usuario" required pattern="[a-z][a-z0-9._]{4,15}"
+                 title="Entre 5 y 16 caracteres: empieza por letra minúscula y solo lleva minúsculas, números, punto o guion bajo"
+                 autocomplete="username" aria-describedby="ayuda-usuario">
+          <small id="ayuda-usuario">5–16 caracteres; empieza por letra minúscula; solo minúsculas, números, «.» y «_».</small>
+        </div>
+
+        <div class="campo">
+          <label for="clave">Contraseña <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input type="password" id="clave" name="clave" required pattern="(?=.*[A-Za-z])(?=.*[0-9]).{8,}"
+                 title="Mínimo 8 caracteres, con letras y números" autocomplete="new-password">
+        </div>
+
+        <div class="campo">
+          <label for="clave2">Repite la contraseña <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input type="password" id="clave2" name="clave2" required autocomplete="new-password">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Motivo y normas</legend>
+
+        <div class="campo">
+          <label for="motivo">Motivo de la solicitud</label>
+          <textarea id="motivo" name="motivo" rows="4" maxlength="300"></textarea>
+        </div>
+
+        <div class="opcion">
+          <input type="checkbox" id="normas" name="normas" value="aceptadas" required>
+          <label for="normas">Acepto las normas de uso de la red del centro <span class="obligatorio" aria-hidden="true">*</span></label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Solicitar alta</button>
+    </form>
+  </main>
+</body>
+</html>

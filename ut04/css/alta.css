@@ -1,0 +1,100 @@
+/* ===== Base ===== */
+:root {
+  --verde: #0b5d3b;
+  --verde-claro: #e8f3ee;
+  --rojo: #c0262d;
+  --ok: #1a7f37;
+  --gris: #555;
+  --borde: #b9c2bd;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  color: #1c1c1c;
+  background: #fafcfb;
+}
+
+/* ===== Cabecera con buscador ===== */
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1rem;
+  padding: .75rem 1rem;
+  background: #fff;
+  border-bottom: 3px solid #e8935a;
+}
+.cabecera img { max-width: 100%; height: auto; }
+.cabecera h1 { margin: 0; font-size: 1.3rem; color: var(--verde); flex: 1; }
+.buscador { display: flex; gap: .5rem; }
+.buscador input { min-width: 12rem; }
+
+main { max-width: 44rem; margin: 0 auto; padding: 1rem; }
+
+/* ===== Formulario ===== */
+fieldset {
+  border: 1px solid var(--borde);
+  border-radius: .5rem;
+  margin: 0 0 1rem;
+  padding: .75rem 1rem 1rem;
+  background: #fff;
+}
+legend { font-weight: 700; color: var(--verde); padding: 0 .4rem; }
+fieldset fieldset { background: var(--verde-claro); margin-top: .75rem; }
+fieldset:disabled { opacity: .55; }
+
+.campo { margin-bottom: .9rem; }
+.campo label { display: block; font-weight: 600; margin-bottom: .25rem; }
+.opcion { display: flex; align-items: center; gap: .5rem; margin: .3rem 0; }
+.opcion label { font-weight: 400; }
+small { display: block; color: var(--gris); margin-top: .2rem; }
+.obligatorio { color: var(--rojo); font-weight: 700; }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"],
+input[type="number"], input[type="password"], input[type="search"],
+input[type="file"], select, textarea {
+  width: 100%;
+  padding: .5rem .6rem;
+  font: inherit;
+  border: 2px solid var(--borde);
+  border-radius: .35rem;
+  background: #fff;
+}
+.buscador input[type="search"] { width: auto; }
+textarea { resize: vertical; }
+
+:focus-visible { outline: 3px solid #1f6feb; outline-offset: 2px; }
+
+button {
+  font: inherit;
+  font-weight: 700;
+  padding: .55rem 1.2rem;
+  color: #fff;
+  background: var(--verde);
+  border: 0;
+  border-radius: .35rem;
+  cursor: pointer;
+}
+button:hover { background: #08472d; }
+
+/* ===== Estados de validación: solo DESPUÉS de que el usuario interactúe ===== */
+:user-invalid { border-color: var(--rojo); background: #fff5f5; }
+:user-valid   { border-color: var(--ok); }
+input[type="radio"]:user-invalid, input[type="checkbox"]:user-invalid { outline: 2px solid var(--rojo); }
+
+/* ===== Utilidades ===== */
+.solo-lectores {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+/* Campo trampa (honeypot): fuera de pantalla, pero no con display:none (algunos bots lo detectan) */
+.trampa { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* ===== Móvil ===== */
+@media (max-width: 480px) {
+  .cabecera h1 { flex-basis: 100%; }
+  .buscador { width: 100%; }
+  .buscador input { flex: 1; min-width: 0; }
+}
